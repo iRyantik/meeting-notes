@@ -9,39 +9,7 @@ description: Turn audio recordings or transcripts into structured meeting notes 
 
 **零依赖**——不需要 buy-side-research-skills 插件。独立使用。
 
-## 安装
-
-用户只需说：
-
-```
-按照 https://github.com/iRyantik/meeting-notes/blob/main/SKILL.md 安装 meeting-notes
-```
-
-Agent 自动执行：
-
-```bash
-# 1. 确保 Python 可用
-python --version || winget install Python.Python.3.12 --silent
-
-# 2. 下载 skill 到 CC skills 目录
-python -c "
-import urllib.request, zipfile, io, shutil
-from pathlib import Path
-url = 'https://api.github.com/repos/iRyantik/meeting-notes/zipball/main'
-with urllib.request.urlopen(url) as r: data = r.read()
-tmp = Path.home() / '.claude' / 'skills' / '_tmp_meeting_notes'
-shutil.rmtree(tmp, ignore_errors=True); tmp.mkdir()
-with zipfile.ZipFile(io.BytesIO(data)) as z: z.extractall(tmp)
-inner = next(tmp.iterdir())
-dst = Path.home() / '.claude' / 'skills' / 'meeting-notes'
-shutil.rmtree(dst, ignore_errors=True); shutil.copytree(inner, dst)
-shutil.rmtree(tmp, ignore_errors=True)
-print('Skill installed')
-"
-
-# 3. 安装依赖（幂等）
-python ~/.claude/skills/meeting-notes/scripts/install.py
-```
+安装请参考 [install.md](install.md)。
 
 ## 原理
 
