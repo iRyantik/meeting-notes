@@ -1,39 +1,39 @@
 # Meeting Notes
 
-> v1.0.0 | Claude Code Skill | Zero Dependencies
+> v1.0.0 | Claude Code Skill | 零依赖
 
-Turn audio recordings or transcripts into structured meeting notes — briefing + Q&A, bilingual, with source verification. Works standalone, no plugin required.
+把音频或转录稿转化为结构化会议纪要——briefing + Q&A，双语，源验证。独立使用，不需要 buy-side-research-skills 插件。
 
 ---
 
-## Install
+## 安装
 
 ```
 按照 https://github.com/iRyantik/meeting-notes/blob/main/install.md 安装 meeting-notes
 ```
 
-One prompt. Agent auto-installs Python, dependencies, ffmpeg. Nothing manual.
+一句话。Agent 自动装 Python、依赖、ffmpeg。不需要手动操作。
 
 ---
 
-## Use
+## 使用
 
 ```
 整理这个会议纪要
 这段录音转文字
 ```
 
-Outputs:
+输出：
 
-- `YYYY-MM-DD-<call>_briefing_zh.md` — structured briefing
-- `YYYY-MM-DD-<call>_briefing_en.md` — English (optional)
-- `YYYY-MM-DD-<call>_qa_zh.md` — Q&A (optional)
+- `YYYY-MM-DD-<call>_briefing_zh.md` — 结构化 briefing
+- `YYYY-MM-DD-<call>_briefing_en.md` — 英文版（可选）
+- `YYYY-MM-DD-<call>_qa_zh.md` — Q&A（可选）
 
 ---
 
-## Requirements
+## 要求
 
-- Claude Code (VS Code extension or CLI)
-- WHISPER_API_KEY env var (for audio transcription only)
+- Claude Code（VS Code 扩展或 CLI）
+- WHISPER_API_KEY 环境变量（仅音频转写需要，文本输入不需要）
 
-Everything else auto-installed on first use.
+其他所有依赖首次使用时自动安装。
