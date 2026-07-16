@@ -27,7 +27,7 @@ python --version || winget install Python.Python.3.12 --silent
 python -c "
 import urllib.request, zipfile, io, shutil
 from pathlib import Path
-url = 'https://api.github.com/repos/iRyantik/meeting-notes/zipball/master'
+url = 'https://api.github.com/repos/iRyantik/meeting-notes/zipball/main'
 with urllib.request.urlopen(url) as r: data = r.read()
 tmp = Path.home() / '.claude' / 'skills' / '_tmp_meeting_notes'
 shutil.rmtree(tmp, ignore_errors=True); tmp.mkdir()
