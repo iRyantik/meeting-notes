@@ -18,7 +18,7 @@ python --version
 
 报错 `command not found` → 自动装：
 
-**Windows**：`winget install Python.Python.3.12 --silent --accept-package-agreements`。装完把 `%LOCALAPPDATA%\Programs\Python\Python312` 加入 PATH。
+**Windows**：`powershell -Command "Invoke-WebRequest -Uri https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe -OutFile $env:TEMP\python.exe; Start-Process $env:TEMP\python.exe -ArgumentList '/quiet InstallAllUsers=0 PrependPath=1 Include_test=0' -Wait"`。装完把 `%LOCALAPPDATA%\Programs\Python\Python312` 加入 PATH。
 
 **macOS**：`brew install python`
 
