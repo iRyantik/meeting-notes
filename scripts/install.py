@@ -36,9 +36,13 @@ def install_pip():
 
 
 def check_ffmpeg():
-    ff = SCRIPT_DIR / "ffmpeg.exe"
+    ff = SCRIPT_DIR / ("ffmpeg.exe" if os.name == "nt" else "ffmpeg")
     if ff.exists():
         print(f"[OK] ffmpeg: {ff}")
+        return True
+    # Also check PATH
+    if shutil.which("ffmpeg"):
+        print("[OK] ffmpeg: in PATH")
         return True
     return False
 
@@ -46,6 +50,14 @@ def check_ffmpeg():
 def install_ffmpeg():
     if check_ffmpeg():
         return
+
+    if sys.platform == "darwin":
+        print("Installing ffmpeg via Homebrew...")
+        subprocess.check_call(["brew", "install", "ffmpeg"])
+        print("[OK] ffmpeg installed")
+        return
+
+    # Windows: download BtbN portable
     print("Downloading ffmpeg (BtbN portable, ~70MB)...")
     url = "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"
     with urllib.request.urlopen(url) as r:
