@@ -18,7 +18,7 @@ python --version
 
 报错 `command not found` → 自动装：
 
-**Windows**：`winget install Python.Python.3.12 --silent`。装完把 `%LOCALAPPDATA%\Programs\Python\Python312` 加入 PATH。
+**Windows**：`winget install Python.Python.3.12 --silent --accept-package-agreements`。装完把 `%LOCALAPPDATA%\Programs\Python\Python312` 加入 PATH。
 
 **macOS**：`brew install python`
 
