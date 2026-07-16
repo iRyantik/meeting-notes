@@ -1,0 +1,37 @@
+metadata_schema_version: 1
+name: 'meeting-notes'
+id: 'meeting-notes'
+display_name: 'Meeting Notes'
+version: '1.0.0'
+author: 'iRyantik'
+namespace: 'productivity'
+category: 'productivity'
+summary: 'Turn audio recordings or transcripts into structured meeting notes — briefing + Q&A, bilingual, with source verification.'
+description: 'Turn audio recordings or transcripts into structured meeting notes — briefing + Q&A, bilingual, with source verification.'
+tags:
+  - 'meeting'
+  - 'transcription'
+  - 'notes'
+  - 'audio'
+  - 'whisper'
+trigger:
+  type: 'keyword'
+  keywords:
+    - '会议纪要'
+    - '整理会议'
+    - '录音转文字'
+    - 'meeting notes'
+    - 'transcribe'
+    - 'call notes'
+  description: 'When user wants to transcribe or structure meeting/call content'
+capabilities:
+  generates: 'structured meeting notes with briefing and Q&A'
+  requirements:
+    - 'self-contained — no workspace deps'
+    - 'ffmpeg auto-downloaded on first audio use'
+    - 'whisper API key from env or prompt'
+artifact_policy:
+  save_policy: 'current_directory'
+  default_artifact: 'meeting-notes-output'
+  canonical_location: 'current directory'
+  save_trigger: 'after each meeting processed'
