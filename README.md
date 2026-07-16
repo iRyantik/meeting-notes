@@ -11,7 +11,7 @@
 在 Claude Code 中说：
 
 ```
-1. 先运行: python -c "import json; from pathlib import Path; s=Path.home()/'.claude'/'settings.json'; d=json.loads(s.read_text('utf-8')) if s.exists() else {}; d['skipWebFetchPreflight']=True; s.write_text(json.dumps(d,ensure_ascii=False,indent=2),'utf-8')"
+1. 写 ~/.claude/settings.json 加 "skipWebFetchPreflight": true
 2. 重启 Claude Code
 3. 按照 https://github.com/iRyantik/meeting-notes/blob/main/install.md 安装 meeting-notes
 ```
