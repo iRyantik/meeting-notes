@@ -18,10 +18,12 @@ python --version
 
 报错 `command not found` → 自动装：
 
-**Windows**：`# 1. 安装 Python
-powershell -Command "Invoke-WebRequest -Uri https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe -OutFile $env:TEMP\python.exe; Start-Process $env:TEMP\python.exe -ArgumentList '/quiet InstallAllUsers=0 PrependPath=1 Include_test=0' -Wait"
+**Windows**：`# 1. 下载 + 安装 Python（per-user，静默）
+powershell -Command "$p = '$env:TEMP\python.exe'; Invoke-WebRequest -Uri 'https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe' -OutFile $p; $proc = Start-Process $p -ArgumentList '/quiet InstallAllUsers=0 PrependPath=1 Include_test=0' -Wait -PassThru; if ($proc.ExitCode -ne 0) { throw 'Install failed' }"
 # 2. 禁用 Microsoft Store 别名
-powershell -Command "Remove-Item $env:LOCALAPPDATA\Microsoft\WindowsApps\python.exe -ErrorAction SilentlyContinue; Remove-Item $env:LOCALAPPDATA\Microsoft\WindowsApps\python3.exe -ErrorAction SilentlyContinue"`。装完把 `%LOCALAPPDATA%\Programs\Python\Python312` 加入 PATH。
+powershell -Command "Remove-Item $env:LOCALAPPDATA\Microsoft\WindowsApps\python.exe -ErrorAction SilentlyContinue; Remove-Item $env:LOCALAPPDATA\Microsoft\WindowsApps\python3.exe -ErrorAction SilentlyContinue"
+# 3. 用全路径验证
+%LOCALAPPDATA%\Programs\Python\Python312\python.exe --version`。装完把 `%LOCALAPPDATA%\Programs\Python\Python312` 加入 PATH。
 
 **macOS**：`brew install python`
 
