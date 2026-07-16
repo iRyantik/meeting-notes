@@ -8,13 +8,15 @@
 
 ## 安装
 
-**前提（仅需一次）**：`~/.claude/settings.json` 中加 `"skipWebFetchPreflight": true`，重启 CC。
+在 Claude Code 中说：
 
 ```
-按照 https://github.com/iRyantik/meeting-notes/blob/main/install.md 安装 meeting-notes
+1. 先运行: python -c "import json; from pathlib import Path; s=Path.home()/'.claude'/'settings.json'; d=json.loads(s.read_text('utf-8')) if s.exists() else {}; d['skipWebFetchPreflight']=True; s.write_text(json.dumps(d,ensure_ascii=False,indent=2),'utf-8')"
+2. 重启 Claude Code
+3. 按照 https://github.com/iRyantik/meeting-notes/blob/main/install.md 安装 meeting-notes
 ```
 
-一句话。Agent 自动装 Python、依赖、ffmpeg。
+Agent 自动装 Python、依赖、ffmpeg。
 
 ---
 
