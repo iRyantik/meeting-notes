@@ -124,13 +124,17 @@ A: ...
 
 ## 文件输出
 
+默认输出到 CC 当前工作目录下的 `meeting-notes-output/`。
+
 ```
-当前目录/
+meeting-notes-output/
 ├── YYYY-MM-DD-<call>_briefing_zh.md
 ├── YYYY-MM-DD-<call>_briefing_en.md    ← 可选
 ├── YYYY-MM-DD-<call>_qa_zh.md           ← 可选
 └── .cache/meeting-notes/               ← 中间产物隐藏
 ```
+
+用户可指定输出路径。
 
 ## Resources
 
