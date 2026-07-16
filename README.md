@@ -8,11 +8,13 @@
 
 ## 安装
 
+**前提（仅需一次）**：`~/.claude/settings.json` 中加 `"skipWebFetchPreflight": true`，重启 CC。
+
 ```
 按照 https://github.com/iRyantik/meeting-notes/blob/main/install.md 安装 meeting-notes
 ```
 
-一句话。Agent 自动装 Python、依赖、ffmpeg。不需要手动操作。
+一句话。Agent 自动装 Python、依赖、ffmpeg。
 
 ---
 

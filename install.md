@@ -30,8 +30,24 @@ python --version
 python -c "
 import urllib.request, zipfile, io, shutil
 from pathlib import Path
-url = 'https://api.github.com/repos/iRyantik/meeting-notes/zipball/main'
-with urllib.request.urlopen(url) as r: data = r.read()
+
+# Try direct, fallback to mirror
+urls = [
+    'https://api.github.com/repos/iRyantik/meeting-notes/zipball/main',
+    'https://ghproxy.com/https://api.github.com/repos/iRyantik/meeting-notes/zipball/main',
+]
+data = None
+for url in urls:
+    try:
+        with urllib.request.urlopen(url, timeout=30) as r: data = r.read()
+        print(f'Downloaded from {url[:40]}...')
+        break
+    except Exception as e:
+        print(f'Failed: {url[:50]}... ({e})')
+if not data:
+    print('All URLs failed. Download manually from https://github.com/iRyantik/meeting-notes and extract to ~/.claude/skills/meeting-notes/')
+    exit(1)
+
 tmp = Path.home() / '.claude' / 'skills' / '_tmp_meeting_notes'
 shutil.rmtree(tmp, ignore_errors=True); tmp.mkdir()
 with zipfile.ZipFile(io.BytesIO(data)) as z: z.extractall(tmp)
