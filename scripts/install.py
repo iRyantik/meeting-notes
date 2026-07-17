@@ -13,7 +13,7 @@ import urllib.request
 import zipfile, io, shutil, os
 from pathlib import Path
 
-REQUIRED_PIP = ["openai-whisper", "requests", "pyyaml"]
+REQUIRED_PIP = ["requests", "pyyaml"]
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 
